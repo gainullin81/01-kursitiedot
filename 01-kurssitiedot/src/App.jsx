@@ -1,4 +1,6 @@
-//1.1: kurssitiedot, step1
+//1.2: kurssitiedot, step2
+import React from 'react';
+
 const Header = (props) => {
   return (
     <h1>
@@ -7,12 +9,10 @@ const Header = (props) => {
   );
 };
 
-const Content = (props) => {
+const Part = (props) => {
   return (
     <p>
-      {props.part1} {props.exercises1}
-      {props.part2} {props.exercises2}
-      {props.part3} {props.exercises3}
+      {props.part} {props.exercises}
     </p>
   );
 };
@@ -22,6 +22,12 @@ const Total = (props) => {
     <p>
       Number of exercises {props.totalExercises}
     </p>
+  );
+};
+
+const Content = (props) => {
+  return (
+    <Part part={props.part} exercises={props.exercises} />
   );
 };
 
@@ -39,11 +45,12 @@ const App = () => {
   return (
     <div>
       <Header course={course} />
-      <Content part1={part1} exercises1={exercises1} />
-      <Content part2={part2} exercises2={exercises2} />
-      <Content part3={part3} exercises3={exercises3} />
+      <Content part={part1} exercises={exercises1} />
+      <Content part={part2} exercises={exercises2} />
+      <Content part={part3} exercises={exercises3} />
       <Total totalExercises={totalExercises} />
     </div>
   );
 };
- export default App;
+
+export default App;
