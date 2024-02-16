@@ -1,69 +1,28 @@
-//1.5: kurssitiedot step5
-
-import React from 'react';
-
-const Header = (props) => {
-  return (
-    <h1>
-      {props.course.name}
-    </h1>
-  );
-};
-
-const Part = (props) => {
-  return (
-    <p>
-      {props.part.name} {props.part.exercises}
-    </p>
-  );
-};
-
-const Content = (props) => {
-  return (
-    <div>
-      {props.course.parts.map((part, index) => (
-        <Part key={index} part={part} />
-      ))}
-    </div>
-  );
-};
-
-const Total = (props) => {
-  const totalExercises = props.course.parts.reduce((sum, part) => sum + part.exercises, 0);
-
-  return (
-    <p>
-      Number of exercises: {totalExercises}
-    </p>
-  );
-};
+//1.6: unicafe step1
+import { useState } from 'react'
 
 const App = () => {
-  const course = {
-    name: 'Half Stack application development',
-    parts: [
-      {
-        name: 'Fundamentals of React',
-        exercises: 10
-      },
-      {
-        name: 'Using props to pass data',
-        exercises: 7
-      },
-      {
-        name: 'State of a component',
-        exercises: 14
-      }
-    ]
-  };
+  // tallenna napit omaan tilaansa
+  const [good, setGood] = useState(0)
+  const [neutral, setNeutral] = useState(0)
+  const [bad, setBad] = useState(0)
+
 
   return (
-    <div>
-      <Header course={course} />
-      <Content course={course} />
-      <Total course={course} />
-    </div>
-  );
-};
+     <div>
+      <h1>give feedback</h1>
+       <button onClick={() => setGood(good + 1)}>good</button> 
+       <button onClick={() => setNeutral(neutral + 1)}>neutral</button> 
+       <button onClick={() => setBad(bad + 1)}>bad</button>
+  
+    <h1>statistics</h1>
+    <p>good: {good}</p>
+    <p>neutral: {neutral}</p>
+    <p>bad: {bad}</p>
+  </div>
+  ) }
+  
+  export default App
 
-export default App;
+
+
